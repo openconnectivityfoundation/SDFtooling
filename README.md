@@ -19,14 +19,18 @@ The provided tooling consist of the following scripts
 The folder structure which is created by the setup_repos script is as follows:
 
      TopFolder |
-               |- SDtooling repository          this repo
+               |-- SDtooling repository          this repo
                |
-               |- playground repository         SDF repo playground, 
-               |                                containing informal contributed SDF files 
+               |-- playground repository         SDF repo playground, 
+               |                                 containing informal contributed SDF files 
                |
-               |- IoTDataModels repository      OCF repo IOTDataModels, 
-                                                containg OAS2.0 files that are part 
-                                                of the specification
+               |-- IoTDataModels repository      OCF repo IOTDataModels, 
+               |                                 containg OAS2.0 files that are part 
+               |                                 of the specification
+               |-- swagger2x repository          The conversion tool
+
+The conversion scripts can be executed from a command line (BASH).
+The following folder structure will be created with the converted files.
         
      TopFolder |
                |- SDtooling repository          this repo
