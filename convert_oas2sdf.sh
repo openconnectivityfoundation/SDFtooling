@@ -39,7 +39,7 @@ do
         echo "============" >> out-2sdf.txt
         echo $myfile >> oas2sdf-output.txt
         echo $myfile.sdf.json >> oas2sdf-output.txt
-        $PYTHON_EXE $SWAGGER2X -template_dir $SWAGGER2XDIR/src/templates -template one-data-model -swagger $file -out_dir $OUTPUTDIR  -jsonindent 2 -output_file auto >> oas2sdf-output.txt 2>&1
+        $PYTHON_EXE $SWAGGER2X -template_dir $SWAGGER2XDIR/src/templates -template OAS2SDF -swagger $file -out_dir $OUTPUTDIR  -jsonindent 2 -output_file auto >> oas2sdf-output.txt 2>&1
         
     fi
 done
