@@ -1,31 +1,45 @@
 # SDF tooling
 
-This repository contains script to convert from 
+This repository contains scripts to convert from:
+
 - OCF modeling to SDF (oas2sdf)
 - SDF to OCF modeling (sdf2oas)
 
 OCF is using OpenAPI specification (OAS2.0) as data modeling language.
-SDF is a new modeling language defined in https://github.com/one-data-model/language
+SDF is a new modeling language defined in https://github.com/one-data-model/SDF
 
-This new language is machine readable (e.g. it is using JSON formatting).
-Therefore it is possible to convert the data models of OCF in this language.
-Also data models in SDF can be converted to OAS2.0.
+This new language is machine-readable (e.g. it is using JSON formatting),
+therefore it is possible to convert the data models of OCF in this language,
+also data models in SDF can be converted to OAS2.0.
 
 The provided tooling consist of the following scripts
-- convert_oas2sdf.sh
-- convert_sdf2oas.sh
-- setup_repos.sh
+
+- convert_oas2sdf.sh - open api to SDF conversion
+- convert_sdf2oas.sh - SDF to open API specification
+- setup_repos.sh - script to set up the local folder structure
+
+## Usage
+
+The provided script are working from local folders.
+Steps to use the scripts are:
+
+- Clone this repo
+  - Run the script 'setup_repos.sh'
+      The script downloads all other used repos.
+- Run one of the convert scripts, depending on the usage
+
+## Folder structure
 
 The folder structure which is created by the setup_repos script is as follows:
 
      TopFolder |
-               |-- SDtooling repository          this repo
+               |-- SDFtooling repository         this repo
                |
                |-- playground repository         SDF repo playground, 
                |                                 containing informal contributed SDF files 
                |
                |-- IoTDataModels repository      OCF repo IOTDataModels, 
-               |                                 containg OAS2.0 files that are part 
+               |                                 containing OAS2.0 files that are part 
                |                                 of the specification
                |-- swagger2x repository          The conversion tool
 
@@ -33,7 +47,7 @@ The conversion scripts can be executed from a command line (BASH).
 The following folder structure will be created with the converted files.
         
      TopFolder |
-               |- SDtooling repository          this repo
+               |- SDFtooling repository         this repo
                       |
                       |- oas2sdf_for_playground
                       |         folder that will be created when running convert_oas2sdf.sh script
