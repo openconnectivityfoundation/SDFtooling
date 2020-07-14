@@ -29,8 +29,8 @@ DEVICETYPE=MYDEVICETYPE
 echo "" > sdf2oas-output.txt
 mkdir -p $OUTPUTDIR
 
-for file in ../playground/odmObject/*airqu*
-#for file in ../playground/odmObject/*
+#for file in ../playground/sdfObject/*airqu*
+for file in ../playground/sdfObject/*
 do
     if [[ -f $file ]]; then
         myfile=$(basename "$file" | cut -d. -f1)
