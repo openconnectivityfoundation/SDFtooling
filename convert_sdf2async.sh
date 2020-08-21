@@ -36,13 +36,17 @@ do
     if [[ -f $file ]]; then
         myfile=$(basename "$file" | cut -d. -f1)
         echo $myfile
-        $PYTHON_EXE $SWAGGER2X -template_dir $SWAGGER2XDIR/src/templates -template SDF2AsyncAPI -swagger $file -out_dir $OUTPUTDIR  -devicetype $DEVICETYPE -output_file $myfile.async.json |tee -a sdf2async-output.txt 2>&1
+        # do the actual conversion
+        $PYTHON_EXE $SWAGGER2X -template_dir $SWAGGER2XDIR/src/templates -template SDF2AsyncAPI -swagger $file -out_dir $OUTPUTDIR -jsonindent 2 -devicetype $DEVICETYPE -prefix_file $myfile |tee -a sdf2async-output.txt 2>&1
         
-        json2yaml $OUTPUTDIR/$myfile.async.json $OUTPUTDIR/$myfile.async.yaml |tee -a sdf2async-output.txt 2>&1
-        
+        # convert to yaml
+        #json2yaml $OUTPUTDIR/$myfile.async.json $OUTPUTDIR/$myfile.async.yaml |tee -a sdf2async-output.txt 2>&1
         #ag $OUTPUTDIR/$myfile.async.yaml @asyncapi/html-template |tee -a sdf2async-output.txt 2>&1
         
-        spectral lint $OUTPUTDIR/$myfile.async.json |tee -a sdf2async-output.txt 2>&1
+        # verify if the output files are correct
+        spectral lint $OUTPUTDIR/${myfile}publisher.async.json |tee -a sdf2async-output.txt 2>&1
+        spectral lint $OUTPUTDIR/${myfile}subscriber.async.json |tee -a sdf2async-output.txt 2>&1
+        spectral lint $OUTPUTDIR/${myfile}pubsub.async.json |tee -a sdf2async-output.txt 2>&1
         
 #                $PYTHON_EXE $SWAGGER2X -template_dir $SWAGGER2XDIR/src/templates -template SDF2AsyncAPI -swagger $file -out_dir $OUTPUTDIR  -jsonindent 2 -devicetype $DEVICETYPE -output_file $myfile.async.json |tee -a sdf2async-output.txt 2>&1
                 
