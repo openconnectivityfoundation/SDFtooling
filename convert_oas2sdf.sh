@@ -21,6 +21,17 @@ set -x #echo on
 
 PYTHON_EXE=python3
 
+ORGDIR=`pwd`
+cd ..
+git clone https://github.com/openconnectivityfoundation/IoTDataModels.git --branch master
+cd $ORGDIR
+
+ORGDIR=`pwd`
+cd ..
+git clone https://github.com/openconnectivityfoundation/swagger2x.git --branch master
+cd $ORGDIR
+
+
 SWAGGER2XDIR=../swagger2x
 SWAGGER2X=$SWAGGER2XDIR/src/swagger2x.py
 OUTPUTDIR=./oas2sdf_for_playground
